@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample/bottomBar.dart';
+import 'package:sample/reportings.dart';
 import 'package:sample/reports.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -45,7 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(22),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => reportings())));
+                  },
                   color: const Color(0xffFFB11F),
                   minWidth: double.infinity,
                   height: 60,
