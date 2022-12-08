@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample/bottomBar.dart';
-import 'package:sample/onlineReport.dart';
+import 'package:sample/OnlineReport.dart';
 
 class reportings extends StatefulWidget {
   const reportings({super.key});
@@ -29,7 +29,7 @@ class _reportingsState extends State<reportings> {
               InkWell(
                 onTap: (() {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => onlineReport()));
+                      MaterialPageRoute(builder: (context) => OnlineReport()));
                 }),
                 child: Container(
                   padding: EdgeInsets.all(25),

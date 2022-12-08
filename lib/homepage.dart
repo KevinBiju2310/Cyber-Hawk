@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sample/bloc/loginbloc.dart';
 import 'package:sample/homescreen.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -9,6 +12,9 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  final password = TextEditingController();
+  final username = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +56,8 @@ class _HomepageState extends State<Homepage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   color: const Color(0xff13131D),
-                  child: const TextField(
+                  child: TextField(
+                    controller: username,
                     style: TextStyle(color: Color(0xff686883)),
                     decoration: InputDecoration(
                         border: OutlineInputBorder(borderSide: BorderSide()),
@@ -67,7 +74,8 @@ class _HomepageState extends State<Homepage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   color: const Color(0xff13131D),
-                  child: const TextField(
+                  child: TextField(
+                    controller: password,
                     style: TextStyle(color: Color(0xff686883)),
                     obscureText: true,
                     decoration: InputDecoration(
@@ -94,29 +102,67 @@ class _HomepageState extends State<Homepage> {
                 padding: const EdgeInsets.all(8),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()));
+                    BlocProvider.of<LoginBloc>(context).add(GetLoginEvent(
+                        password: password.text.toString(),
+                        username: username.text.toString()));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const HomeScreen()));
                   },
                   color: const Color(0xffFFB11F),
                   minWidth: 20,
                   height: 53,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      SizedBox(
-                        width: 140,
-                      ),
-                      Text(
-                        "Login",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 160),
-                        child: Icon(Icons.arrow_forward),
-                      )
-                    ],
+                  child: BlocConsumer<LoginBloc, LoginState>(
+                    builder: (context, state) {
+                      if (state is Loading) {
+                        return const SizedBox(
+                          height: 18.0,
+                          width: 18.0,
+                          child: CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.black),
+                            strokeWidth: 5,
+                          ),
+                        );
+                      } else {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            SizedBox(
+                              width: 140,
+                            ),
+                            Text(
+                              "Login",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 160),
+                              child: Icon(Icons.arrow_forward),
+                            )
+                          ],
+                        );
+                      }
+                    },
+                    listener: (context, state) {
+                      if (state is LoginSuccess) {
+                        // return
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomeScreen()));
+                      }
+
+                      if (state is LoginError) {
+                        // return
+
+                        Fluttertoast.showToast(
+                          msg: "invalid Password",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                        );
+                      }
+                    },
                   ),
                 ),
               ),

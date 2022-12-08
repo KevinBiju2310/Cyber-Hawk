@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:sample/bottomBar.dart';
 
-class onlineReport extends StatefulWidget {
-  const onlineReport({super.key});
+class OnlineReport extends StatefulWidget {
+  const OnlineReport({super.key});
 
   @override
-  State<onlineReport> createState() => _onlineReportState();
+  State<OnlineReport> createState() => _OnlineReportState();
 }
 
-class _onlineReportState extends State<onlineReport> {
+class _OnlineReportState extends State<OnlineReport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +17,22 @@ class _onlineReportState extends State<onlineReport> {
         backgroundColor: Color(0xff101010),
         title: Text('Online Reporting'),
       ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Select a crime type',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30),
+            ),
+              
+          )
+        ],
+      ),
+      bottomNavigationBar: bottomBar(),
     );
   }
 }
