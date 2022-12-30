@@ -70,7 +70,7 @@ class _reportingsState extends State<reportings> {
           )
         ],
       ),
-      bottomNavigationBar: bottomBar(),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

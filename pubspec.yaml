@@ -50,6 +50,9 @@ dev_dependencies:
   fluttertoast: ^8.1.1
   toggle_switch: ^2.0.1
   flutter_bloc: ^8.1.1
+  http: ^0.13.3
+  connectivity: ^3.0.6
+  shared_preferences: ^2.0.9
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -28,11 +28,17 @@ class _OnlineReportState extends State<OnlineReport> {
                   fontWeight: FontWeight.bold,
                   fontSize: 30),
             ),
-              
+          ),
+          Container(
+            height: 10,
+            width: 50,
+            child: Row(
+              children: [Image.asset('assets/parrot.jpg')],
+            ),
           )
         ],
       ),
-      bottomNavigationBar: bottomBar(),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

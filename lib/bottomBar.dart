@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class bottomBar extends StatefulWidget {
-  const bottomBar({super.key});
+class BottomBar extends StatefulWidget {
+  const BottomBar({super.key});
 
   @override
-  State<bottomBar> createState() => _bottomBarState();
+  State<BottomBar> createState() => _BottomBarState();
 }
 
-class _bottomBarState extends State<bottomBar> {
+class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(

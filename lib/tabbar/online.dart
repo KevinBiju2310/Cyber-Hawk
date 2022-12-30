@@ -131,7 +131,7 @@ class _onlineState extends State<online> {
           ],
         ),
       ),
-      bottomNavigationBar: bottomBar(),
+      bottomNavigationBar: BottomBar(),
       // bottomNavigationBar: BottomNavigationBar(
       //   selectedItemColor: Colors.white,
       //   unselectedItemColor: Colors.white,

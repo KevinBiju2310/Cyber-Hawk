@@ -185,7 +185,7 @@ class _offlineState extends State<offline> {
           ],
         ),
       ),
-      bottomNavigationBar: bottomBar(),
+      bottomNavigationBar: BottomBar(),
       // bottomNavigationBar: BottomNavigationBar(
       //   selectedItemColor: Colors.white,
       //   unselectedItemColor: Colors.white,
