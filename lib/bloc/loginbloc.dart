@@ -17,6 +17,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     signupModel = (await Repository()
         .checkPhoneNumber(url: '/user/login/password', data: map));
 
+    // if (signupModel.status == true) {
+    //   emit(LoginSuccess());
+    // } else {
+    //   emit(LoginError());
+    // }
     if (event.password == "123" && event.username == "kevin") {
       emit(LoginSuccess());
     } else {
